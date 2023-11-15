@@ -25,6 +25,8 @@ public class Lezione28Application {
         Sezioni sezione = new Sezioni(List.of(sottosezione2), List.of(page1));
 
         Book book = new Book(List.of("Beppe", "Marcello"), List.of(sezione), List.of(page1, page3, page2), 50);
+
+
         System.out.println(book.getContent());
         System.err.println("authors= " + book.getAuthor());
         System.out.println("book price= " + book.getPrice());

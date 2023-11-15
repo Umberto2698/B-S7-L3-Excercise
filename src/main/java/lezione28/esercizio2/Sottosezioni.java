@@ -3,8 +3,6 @@ package lezione28.esercizio2;
 import java.util.List;
 
 public class Sottosezioni implements element {
-    private int size;
-    private String content;
     private List<Page> pages;
 
     public Sottosezioni(List<Page> pages) {
@@ -13,22 +11,16 @@ public class Sottosezioni implements element {
 
     @Override
     public String getContent() {
-        pages.forEach(page -> content += page.getContent() + System.lineSeparator());
+        String content = "";
+        content += pages.stream().map(Page::getContent) + System.lineSeparator();
         return content;
     }
 
     @Override
-    public int getPrice() {
-        return 0;
-    }
-
-    @Override
     public int getSize() {
-        return pages.size();
+        int size = 0;
+        size += pages.stream().mapToInt(Page::getSize).sum();
+        return size;
     }
 
-    @Override
-    public List<String> getAuthor() {
-        return null;
-    }
 }

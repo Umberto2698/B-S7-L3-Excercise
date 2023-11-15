@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Book implements element {
     private int price;
-    private int size;
     private String content;
     private List<Page> pages;
     private List<Sezioni> sections;
@@ -19,23 +18,25 @@ public class Book implements element {
 
     @Override
     public String getContent() {
-        content = "";
-        sections.forEach(sezioni -> content += sezioni.getContent());
-        pages.forEach(page -> content += page.getContent() + System.lineSeparator());
+        String content = "";
+        content += sections.stream().map(Sezioni::getContent);
+        content += pages.stream().map(Page::getContent) + System.lineSeparator();
         return content;
     }
 
-    @Override
     public int getPrice() {
         return price;
     }
 
     @Override
     public int getSize() {
-        return pages.size() + sections.size();
+        int size = 0;
+        size += sections.stream().mapToInt(Sezioni::getSize).sum();
+        size += pages.stream().mapToInt(Page::getSize).sum();
+        return size;
     }
 
-    @Override
+
     public List<String> getAuthor() {
         return authors;
     }

@@ -1,6 +1,6 @@
 package lezione28.esercizio1;
 
-public abstract class UserData implements DataSource {
+public abstract class UserData {
     private String nomeCompleto;
     private int eta;
 
@@ -12,15 +12,8 @@ public abstract class UserData implements DataSource {
         this.eta = eta;
     }
 
-    @Override
-    public String getNomeConpleto() {
-        return this.nomeCompleto;
+    public void getData(DataSource ds) {
+        nomeCompleto = ds.getNomeCompleto();
+        eta = ds.getEta();
     }
-
-    @Override
-    public int getEta() {
-        return this.eta;
-    }
-
-    public abstract String getNomeCompleto();
 }
