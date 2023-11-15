@@ -22,4 +22,5 @@ public abstract class UserData implements DataSource {
         return this.eta;
     }
 
+    public abstract String getNomeCompleto();
 }

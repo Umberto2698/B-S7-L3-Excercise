@@ -10,8 +10,16 @@ public class Book implements element {
     private List<Sezioni> sections;
     private List<String> authors;
 
+    public Book(List<String> authors, List<Sezioni> sections, List<Page> pages, int price) {
+        this.authors = authors;
+        this.sections = sections;
+        this.pages = pages;
+        this.price = price;
+    }
+
     @Override
     public String getContent() {
+        content = "";
         sections.forEach(sezioni -> content += sezioni.getContent());
         pages.forEach(page -> content += page.getContent() + System.lineSeparator());
         return content;

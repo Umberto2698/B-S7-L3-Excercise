@@ -4,10 +4,12 @@ import java.util.List;
 
 public class Sottosezioni implements element {
     private int size;
-
     private String content;
-
     private List<Page> pages;
+
+    public Sottosezioni(List<Page> pages) {
+        this.pages = pages;
+    }
 
     @Override
     public String getContent() {
